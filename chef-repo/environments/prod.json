@@ -1,0 +1,27 @@
+{
+  "name": "prod",
+  "description": "Prod environment",
+  "default_attributes": {
+   
+    // This will overwrite the default variables declared 
+    // in the attributes/default.rb for the prod environment   
+    "redis2": {
+        "instances": {
+          "master": {
+            "data_dir":  "/opt/Prod/data/redis",
+            "replication": "master",
+            "bindaddress": "0.0.0.0",
+            "port": "6379"
+          }
+        }
+    }
+  },
+
+  // Use the redis2 0.5.0 cookbook version for prod environment 
+  "cookbook_versions": {
+    "redis2": "= 0.5.0"
+  },
+  
+  "json_class": "Chef::Environment",
+  "chef_type": "environment"
+  }
